@@ -7,7 +7,7 @@ interface Props {
 
 const variantClasses: Record<ButtonVariants, string> = {
   primary: 'bg-red-600 text-white active:bg-red-700',
-  secondary: 'bg-slate-600 text-white'
+  secondary: 'bg-gray-400 text-white'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,5 +27,4 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style scoped>
-
 </style>
