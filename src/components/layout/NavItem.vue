@@ -3,6 +3,7 @@ import Button from '@/components/ui/Button.vue'
 
 interface Props {
   path: string
+  active: boolean
 }
 
 const props = defineProps<Props>()
@@ -10,7 +11,10 @@ const props = defineProps<Props>()
 
 <template>
   <router-link :to="props.path">
-    <Button>
+    <Button
+      :variant="!props.active ? 'secondary' : undefined"
+      class="w-[275px]"
+     >
       <slot />
     </Button>
   </router-link>
