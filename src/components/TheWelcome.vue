@@ -6,18 +6,22 @@
 </script>
 
 <template>
-  <img src="@/assets/welcome.svg" alt="" sizes="" srcset="">
-  <h1>
-    Welcome to Pokédex
-  </h1>
-  <p>
-    The digital encyclopedia created by Professor Oak is an invaluable tool to Trainers in the Pokémon world.
-  </p>
-  <div>
-    <Button @click="router.replace('home')">
-      Get started
-    </Button>
-  </div>
+  <main class="h-screen flex flex-col justify-center items-center text-center">
+    <div class="mx-auto mb-[60px]">
+      <img src="@/assets/img/welcome.svg" alt="" sizes="" srcset="">
+    </div>
+    <h1 class="mb-8 font-bold text-2xl">
+      Welcome to Pokédex
+    </h1>
+    <p class="mb-12">
+      The digital encyclopedia created by Professor Oak is an invaluable tool <br> to Trainers in the Pokémon world.
+    </p>
+    <div class="grid place-items-center">
+      <Button @click="router.push('pokemons')">
+        Get started
+      </Button>
+    </div>
+  </main>
 </template>
 
 <style>
