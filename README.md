@@ -1,45 +1,22 @@
 # global-pokemons
 
-This template should help get you started developing with Vue 3 in Vite.
+Este proyecto fue hecho con Vue 3 en su última versión (3.5.13) + Vite + Pinia. Sus rutas son gestionadas con Vue-router. Y sus estilos hechos con TailwindCSS.
 
-## Recommended IDE Setup
+## TailwindCSS
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+Para la estilización del contenido opté por usar TailwindCSS, ya que sus clases utilitarias son una buena opción para maquetar los componetes UI que serán recurrentes en la app y mantener un estándar de separación de elementos consistente. En resumen, muy buena opción para este desafío.
 
 ## Project Setup
 
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
