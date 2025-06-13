@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import { RouterLink } from 'vue-router'
   import ListItem from '@/components/ui/ListItem.vue'
   import Icon from '@/components/ui/Icon.vue'
 
@@ -12,18 +11,16 @@
 </script>
 
 <template>
-  <RouterLink :to="`list/${props.name}`">
-    <ListItem>
-      <div class="w-full flex justify-between items-center capitalize">
-        {{ props.name }}
+  <ListItem>
+    <div class="w-full flex justify-between items-center capitalize">
+      {{ props.name }}
 
-        <button class="p-1 rounded-full cursor-pointer hover:bg-gray-100">
-          <Icon
-            icon="mdi:star"
-            :class="['text-xl', favorite ? 'text-amber-400' : 'text-gray-300']"
-          />
-        </button>
-      </div>
-    </ListItem>
-  </RouterLink>
+      <button class="p-1 rounded-full cursor-pointer hover:bg-gray-100">
+        <Icon
+          icon="mdi:star"
+          :class="['text-xl', favorite ? 'text-amber-400' : 'text-gray-300']"
+        />
+      </button>
+    </div>
+  </ListItem>
 </template>

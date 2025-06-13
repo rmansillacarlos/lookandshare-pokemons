@@ -11,13 +11,14 @@
     <InputText class="mb-10" placeholder="Search" @input="e => pokemons(e)"/>
     
     <ul class="flex flex-col gap-2">
-      <PokemonItem
-        v-for="pokemon in pokemons"
-        :name="pokemon.name"
-        :url="pokemon.url"
-      >
-        {{ pokemon.name }}
-      </PokemonItem>
+      <RouterLink v-for="pokemon in pokemons" :to="`all/${pokemon.name}`">
+        <PokemonItem
+          :name="pokemon.name"
+          :url="pokemon.url"
+        >
+          {{ pokemon.name }}
+        </PokemonItem>
+      </RouterLink>
       <router-view />
     </ul>
   </main>

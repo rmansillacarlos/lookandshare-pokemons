@@ -8,7 +8,7 @@
 <template>
   <main class="h-screen flex flex-col justify-center items-center text-center">
     <div class="mx-auto mb-[60px]">
-      <img src="@/assets/img/welcome.svg" alt="" sizes="" srcset="">
+      <img src="@/assets/img/welcome.svg" alt="Global Pokemon Welcome">
     </div>
     <h1 class="mb-8 font-bold text-2xl">
       Welcome to Pokédex
@@ -17,12 +17,9 @@
       The digital encyclopedia created by Professor Oak is an invaluable tool <br> to Trainers in the Pokémon world.
     </p>
     <div class="grid place-items-center">
-      <Button @click="router.push('list')">
+      <Button @click="router.push('pokemons/all')">
         Get started
       </Button>
     </div>
   </main>
 </template>
-
-<style>
-</style>

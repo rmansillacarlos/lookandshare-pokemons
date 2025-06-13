@@ -14,8 +14,10 @@
   <nav class="p-4 bg-white flex gap-4">
     <ul class="mx-auto flex gap-4">
       <NavItem
-        v-for="navItem in navLinks" :key="navItem.path" :path="navItem.path"
-        :active="route.path === navItem.path"
+        v-for="navItem in navLinks"
+        :key="navItem.path"
+        :path="navItem.path"
+        :active="route.path.startsWith(navItem.path)"
       >
         {{ navItem.text }}
       </NavItem>
