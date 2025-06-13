@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import { useScrollLock } from '@/composables/useScrollLock'
   import usePokemonDetail from '@/composables/usePokemonDetail'
@@ -33,7 +33,6 @@
   })
 
   const isFavorite = computed(() => {
-    // debugger
     return pokemonDetail.value.favorite
   })
 
@@ -41,6 +40,10 @@
 
   onMounted(async () => {
     await getPokemonDetail()
+  })
+
+  onUnmounted(() => {
+    pokemonStore.resetPokemonDetail()
   })
 </script>
 

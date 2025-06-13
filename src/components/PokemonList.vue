@@ -1,38 +1,30 @@
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
-  import InputText from '@/components/ui/InputText.vue'
-  import PokemonItem from '@/components/PokemonItem.vue'
+  import { useRoute, useRouter } from 'vue-router'
   import type { PokemonItem as PokemonItemType } from '@/types/pokemon'
+  import PokemonItem from '@/components/PokemonItem.vue'
 
   interface Props {
-    pokemons: PokemonItemType
+    pokemons: PokemonItemType[]
   }
 
-  const route = useRoute()
+  const router = useRouter()
 
   const props = defineProps<Props>()
 </script>
 
 <template>
-  <main class="mt-8 w-[320px] md:w-[570px]">
-    <InputText
-      class="mb-10"
-      placeholder="Search"
-      @input="e => pokemons(e)"
-    />
-    <ul class="flex flex-col gap-2">
-      <RouterLink
-        v-for="pokemon in props.pokemons"
-        :key="pokemon.name"
-        :to="`${route.path}/${pokemon.name}`"
-      >
-        <PokemonItem
-          :name="pokemon.name"
-          :favorite="pokemon.favorite"
+  <ul class="flex flex-col gap-2">
+    <a
+      v-for="pokemon in props.pokemons"
+      class="cursor-pointer"
+      @click="router.push({ path: `/pokemons/all/${pokemon.name}` })"
+    >
+      <PokemonItem
+        :name="pokemon.name"
+        :favorite="pokemon.favorite"
         >
-          {{ pokemon.name }}
-        </PokemonItem>
-      </RouterLink>
-    </ul>
-  </main>
+        {{ pokemon.name }}
+      </PokemonItem>
+    </a>
+  </ul>
 </template>

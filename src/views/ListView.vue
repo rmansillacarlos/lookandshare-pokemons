@@ -1,11 +1,14 @@
 <script setup lang="ts">
+  import { computed, watch } from 'vue'
+  import { storeToRefs } from 'pinia'
   import usePokemons from '@/composables/usePokemons'
   import { usePokemonStore } from '@/stores/pokemon.store'
   import PokemonList from '@/components/PokemonList.vue'
-import { computed } from 'vue'
+  import NotFoundStatus from '@/components/NotFoundStatus.vue'
 
-  const { fetchPokemons } = usePokemons()
   const pokemonStore = usePokemonStore()
+  const { searchNotFound } = storeToRefs(pokemonStore)
+  const { fetchPokemons } = usePokemons()
 
   const pokemons = computed(() => (pokemonStore.pokemonsWithFav))
 
@@ -14,7 +17,8 @@ import { computed } from 'vue'
 </script>
 
 <template>
-  <PokemonList :pokemons="pokemons" />
+  <PokemonList v-if="!searchNotFound" :pokemons="pokemons" />
+  <NotFoundStatus v-else />
   <!-- detail modal -->
   <router-view />
 </template>

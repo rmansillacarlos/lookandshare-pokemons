@@ -5,6 +5,8 @@ interface State {
   pokemonDetail: PokemonDetail
   pokemons: PokemonItem[]
   favorites: string[]
+  searchText: string
+  searchNotFound: boolean
 }
 
 export const usePokemonStore = defineStore('pokemon', {
@@ -16,11 +18,21 @@ export const usePokemonStore = defineStore('pokemon', {
       types: []
     },
     pokemons: [],
-    favorites: []
+    favorites: [],
+    searchText: '',
+    searchNotFound: false
   }),
   getters: {
     pokemonsWithFav(state: State) {
-      return state.pokemons.map(p => ({
+      let outPokemons: PokemonItem[] = []
+      if (!!this.searchText.length) {
+        outPokemons = state.pokemons.filter((p: PokemonItem) => p.name.includes(this.searchText))
+        this.searchNotFound = !outPokemons.length
+      } else {
+        outPokemons = state.pokemons
+      }
+      this.searchNotFound = false
+      return outPokemons.map((p: PokemonItem) => ({
         ...p,
         favorite: this.favorites.includes(p.name)
       }))
@@ -33,6 +45,20 @@ export const usePokemonStore = defineStore('pokemon', {
     }
   },
   actions: {
+    reset() {
+      this.resetPokemonDetail()
+      this.pokemons = []
+      this.searchText = ''
+      this.searchNotFound = false
+    },
+    resetPokemonDetail() {
+      this.pokemonDetail = {
+        name: '',
+        weight: 0,
+        height: 0,
+        types: []
+      }
+    },
     addOrRemoveFavorite(name: string) {
       const index = this.favorites.indexOf(name)
       const exists = index !== -1
@@ -67,5 +93,8 @@ export const usePokemonStore = defineStore('pokemon', {
         favorite: isFavorite
       }
     },
+    setSearchNotFound(value: boolean) {
+      this.searchNotFound = value
+    }
   },
 })
