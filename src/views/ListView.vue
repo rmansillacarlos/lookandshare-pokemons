@@ -1,7 +1,6 @@
 <script setup lang="ts">
   import InputText from '@/components/ui/InputText.vue'
   import PokemonItem from '@/components/PokemonItem.vue'
-  import PokemonModal from '@/components/PokemonModal.vue'
   import usePokemons from '@/composables/usePokemons'
 
   const { pokemons } = usePokemons()

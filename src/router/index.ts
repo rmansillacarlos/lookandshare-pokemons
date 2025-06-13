@@ -3,8 +3,8 @@ import WelcomeView from '@/views/WelcomeView.vue'
 import ListView from '@/views/ListView.vue'
 import FavoritesView from '@/views/FavoritesView.vue'
 import MainLayout from '@/layout/MainLayout.vue'
-import PokemonModal from '@/components/PokemonModal.vue'
 import { useAppStore } from '@/stores/app'
+import PokemonModal from '@/components/PokemonModal.vue'
 
 
 const router = createRouter({
@@ -39,19 +39,6 @@ const router = createRouter({
       ]
     },
   ],
-})
-
-router.beforeEach((to, from, next) => {
-  const appStore = useAppStore()
-  // appStore.setLoading(true)
-  next()
-})
-
-router.afterEach((to, from, next) => {
-  const appStore = useAppStore()
-  setTimeout(() => {
-    appStore.setLoading(false)
-  }, 300)
 })
 
 export default router

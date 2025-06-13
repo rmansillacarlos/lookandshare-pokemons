@@ -3,7 +3,11 @@
 
 <template>
   <main>
-    <img src="@/assets/img/loader.svg" alt="Loading Global Pokemons" sizes="" srcset="">
+    <img
+      src="@/assets/img/loader.svg"
+      alt="Loading Global Pokemons"
+      class="animate-pulse"
+    >
   </main>
 </template>
 
