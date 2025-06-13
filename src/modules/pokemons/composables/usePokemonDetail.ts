@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/vue-query'
 import { storeToRefs } from 'pinia'
 import {
   getPokemon as getPokemonService
-} from '@/services/pokemon.services.ts'
-import type { PokemonDetail, PokemonDataResponse } from '@/types/pokemon'
-import { usePokemonStore } from '@/stores/pokemon.store'
+} from '@/modules/pokemons/services/pokemon.services'
+import type { PokemonDetail, PokemonDataResponse } from '@/modules/pokemons/types/pokemon'
+import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
 
 const usePokemonDetail = (nameParam: string) => {
   const pokemonStore = usePokemonStore()

@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/vue-query'
 import { useRouter } from 'vue-router'
 import {
   fetchPokemons as fetchPokemonsService,
-} from '@/services/pokemon.services.ts'
-import { usePokemonStore } from '@/stores/pokemon.store'
-import type { PokemonsResponse } from '@/types/pokemon'
+} from '@/modules/pokemons/services/pokemon.services'
+import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
+import type { PokemonsResponse } from '@/modules/pokemons/types/pokemon'
 import { useAppStore } from '@/stores/app'
 
 const usePokemons = () => {

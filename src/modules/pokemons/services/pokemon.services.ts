@@ -1,5 +1,5 @@
 import api from '@/api'
-import type { PokemonDataResponse, PokemonsResponse } from '@/types/pokemon'
+import type { PokemonDataResponse, PokemonsResponse } from '@/modules/pokemons/types/pokemon'
 
 export const fetchPokemons = async (): Promise<PokemonsResponse> => {
   const response = await api.get('pokemon?limit=100000&offset=0')

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { usePokemonStore } from '@/stores/pokemon.store.ts'
+  import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
   import ButtonUI from '@/components/ui/ButtonUI.vue'
   
   const pokemonStore = usePokemonStore()

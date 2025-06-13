@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { PokemonDetail, PokemonItem } from '@/types/pokemon'
+import type { PokemonDetail, PokemonItem } from '@/modules/pokemons/types/pokemon'
 
 interface State {
   pokemonDetail: PokemonDetail

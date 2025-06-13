@@ -3,7 +3,5 @@
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <TheWelcome />
 </template>

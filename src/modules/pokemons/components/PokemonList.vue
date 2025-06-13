@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { useRouter } from 'vue-router'
-  import type { PokemonItem as PokemonItemType } from '@/types/pokemon'
-  import PokemonItem from '@/components/PokemonItem.vue'
+  import type { PokemonItem as PokemonItemType } from '@/modules/pokemons/types/pokemon'
+  import PokemonItem from '@/modules/pokemons/components/PokemonItem.vue'
 
   interface Props {
     pokemons: PokemonItemType[]

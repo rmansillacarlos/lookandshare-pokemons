@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import ListItem from '@/components/ui/ListItem.vue'
   import Icon from '@/components/ui/IconUI.vue'
-  import { usePokemonStore } from '@/stores/pokemon.store'
+  import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
 
   interface Props {
     name: string

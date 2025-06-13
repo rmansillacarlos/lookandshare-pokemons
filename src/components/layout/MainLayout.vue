@@ -4,7 +4,7 @@
   import { storeToRefs } from 'pinia'
   import NavItem from '@/components/layout/NavItem.vue'
   import InputText from '@/components/ui/InputText.vue'
-  import { usePokemonStore } from '@/stores/pokemon.store'
+  import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
 
   const route = useRoute()
   const pokemonStore = usePokemonStore()

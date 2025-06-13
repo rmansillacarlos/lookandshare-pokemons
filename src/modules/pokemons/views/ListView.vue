@@ -2,10 +2,10 @@
   import { computed, onMounted } from 'vue'
   import { useRoute } from 'vue-router'
   import { storeToRefs } from 'pinia'
-  import usePokemons from '@/composables/usePokemons'
-  import { usePokemonStore } from '@/stores/pokemon.store'
-  import PokemonModal from '@/components/PokemonModal.vue'
-  import PokemonList from '@/components/PokemonList.vue'
+  import usePokemons from '@/modules/pokemons/composables/usePokemons'
+  import { usePokemonStore } from '@/modules/pokemons/store/pokemon.store'
+  import PokemonModal from '@/modules/pokemons/components/PokemonModal.vue'
+  import PokemonList from '@/modules/pokemons/components/PokemonList.vue'
   import NotFoundStatus from '@/components/NotFoundStatus.vue'
 
   const pokemonStore = usePokemonStore()

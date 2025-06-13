@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import WelcomeView from '@/views/WelcomeView.vue'
-import MainLayout from '@/layout/MainLayout.vue'
-import ListView from '@/views/ListView.vue'
-import FavoritesView from '@/views/FavoritesView.vue'
+import MainLayout from '@/components/layout/MainLayout.vue'
+import ListView from '@/modules/pokemons/views/ListView.vue'
+import FavoritesView from '@/modules/pokemons/views/FavoritesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
