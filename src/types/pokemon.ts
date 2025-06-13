@@ -3,12 +3,13 @@ export interface PokemonItem {
   favorite: string
 }
 
-export interface PokemonData {
+export interface PokemonDetail {
   name: string
   weight: number
   height: number
   types: string[],
   img?: string
+  favorite?: boolean
 }
 
 interface PokemonSpritesResponse {

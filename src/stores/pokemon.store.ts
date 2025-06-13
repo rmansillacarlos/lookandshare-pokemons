@@ -1,13 +1,20 @@
 import { defineStore } from 'pinia'
-import type { PokemonItem } from '@/types/pokemon'
+import type { PokemonDetail, PokemonItem } from '@/types/pokemon'
 
 interface State {
+  pokemonDetail: PokemonDetail
   pokemons: PokemonItem[]
   favorites: string[]
 }
 
 export const usePokemonStore = defineStore('pokemon', {
   state: (): State => ({
+    pokemonDetail: {
+      name: '',
+      weight: 0,
+      height: 0,
+      types: []
+    },
     pokemons: [],
     favorites: []
   }),
@@ -28,9 +35,20 @@ export const usePokemonStore = defineStore('pokemon', {
   actions: {
     addOrRemoveFavorite(name: string) {
       const index = this.favorites.indexOf(name)
-      if (index !== -1) this.favorites.splice(index, 1)
+      const exists = index !== -1
+      if (exists) {
+        this.favorites.splice(index, 1)
+      } 
       else this.favorites.push(name)
+
+      this.setPokemonDetailFavorite(!exists)
       this.saveFavorites()
+    },
+    setPokemonDetailFavorite(value: boolean) {
+       this.pokemonDetail = {
+        ...this.pokemonDetail,
+        favorite: value
+      }
     },
     saveFavorites() {
       localStorage.setItem('pokemonFavorites', JSON.stringify(this.favorites))
@@ -41,6 +59,13 @@ export const usePokemonStore = defineStore('pokemon', {
     },
     setPokemons(newValue: PokemonItem[]) {
       this.pokemons = newValue
-    }
+    },
+    setPokemonDetail(pokemonData: PokemonDetail) {
+      const isFavorite = !!this.favorites.find(name => name === pokemonData.name)
+      this.pokemonDetail = {
+        ...pokemonData,
+        favorite: isFavorite
+      }
+    },
   },
 })

@@ -33,7 +33,6 @@
           {{ pokemon.name }}
         </PokemonItem>
       </RouterLink>
-      <router-view />
     </ul>
   </main>
 </template>

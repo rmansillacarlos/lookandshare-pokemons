@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import PokemonList from '@/components/PokemonList.vue'
-  import { usePokemonStore } from '@/stores/pokemonStore'
+  import { usePokemonStore } from '@/stores/pokemon.store'
   import { computed } from 'vue'
 
   const pokemonStore = usePokemonStore()

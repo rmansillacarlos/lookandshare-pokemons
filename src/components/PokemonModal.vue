@@ -3,25 +3,26 @@
   import { useRoute, useRouter } from 'vue-router'
   import { useScrollLock } from '@/composables/useScrollLock'
   import usePokemonDetail from '@/composables/usePokemonDetail'
+  import { usePokemonStore } from '@/stores/pokemon.store'
   import PokemonStat from '@/components/PokemonProp.vue'
   import Button from '@/components/ui/ButtonUI.vue'
   import Icon from '@/components/ui/IconUI.vue'
+  import { storeToRefs } from 'pinia'
 
   const route = useRoute()
   const router = useRouter()
   const selectedPokemonName = Array.isArray(route.params.name) ? route.params.name[0] : route.params.name
 
-  const { pokemonDetail, refetch } = usePokemonDetail(selectedPokemonName)
-
-  const getPokemonDetail = async () => {
-    await refetch()
-  }
+  const { getPokemonDetail } = usePokemonDetail(selectedPokemonName)
+  const pokemonStore = usePokemonStore()
+  const { pokemonDetail } = storeToRefs(pokemonStore)
 
   const pokemonProps = computed(() => {
     let pokemonValues
     if (pokemonDetail.value) {
       const propertiesWithoutImg = { ...pokemonDetail.value }
       delete propertiesWithoutImg.img
+      delete propertiesWithoutImg.favorite
       pokemonValues = pokemonDetail.value && Object.entries(propertiesWithoutImg)
     }
     return pokemonValues
@@ -29,6 +30,11 @@
 
   const pokemonImage = computed(() => {
     return pokemonDetail.value && pokemonDetail.value.img
+  })
+
+  const isFavorite = computed(() => {
+    // debugger
+    return pokemonDetail.value.favorite
   })
 
   useScrollLock()
@@ -68,10 +74,13 @@
       </ul>
       <div class="mt-6 flex justify-between items-center">
         <Button>Share to my friends</Button>
-        <button class="p-1 rounded-full cursor-pointer hover:bg-gray-100">
+        <button
+          class="p-1 rounded-full cursor-pointer hover:bg-gray-100"
+          @click="pokemonStore.addOrRemoveFavorite(pokemonDetail.name)"
+        >
           <Icon
             icon="mdi:star"
-            :class="['text-3xl', true ? 'text-amber-400' : 'text-gray-300']"
+            :class="['text-3xl', isFavorite ? 'text-amber-400' : 'text-gray-300']"
           />
         </button>
       </div>

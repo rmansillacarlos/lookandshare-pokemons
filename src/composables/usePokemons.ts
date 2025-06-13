@@ -3,7 +3,7 @@ import {
   fetchPokemons as fetchPokemonsService,
 } from '@/services/pokemon.services.ts'
 import { useLoader } from '@/composables/useLoader'
-import { usePokemonStore } from '@/stores/pokemonStore'
+import { usePokemonStore } from '@/stores/pokemon.store'
 import type { PokemonsResponse } from '@/types/pokemon'
 
 const usePokemons = () => {
