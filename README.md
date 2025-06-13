@@ -2,6 +2,8 @@
 
 Este proyecto fue hecho con Vue 3 en su última versión (3.5.13) + Vite + Pinia. Sus rutas son gestionadas con Vue-router. Y sus estilos hechos con TailwindCSS. Contiene test hechos con Vitest.
 
+PD: Además de las features solicitadas, la función de guardar en favoritos permite guardar de forma persistente haciendo uso del LocalStorage del navegador.
+
 ## Stack tecnológico
 
 ### TailwindCSS
