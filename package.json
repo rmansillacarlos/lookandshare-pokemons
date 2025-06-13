@@ -13,8 +13,10 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@pinia/testing": "^1.0.2",
     "@tailwindcss/postcss": "^4.1.10",
     "@tanstack/vue-query": "^5.80.7",
+    "@vitest/ui": "^3.2.3",
     "axios": "^1.9.0",
     "pinia": "^3.0.1",
     "postcss": "^8.5.5",
