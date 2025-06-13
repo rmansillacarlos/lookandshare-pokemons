@@ -38,7 +38,16 @@ export const usePokemonStore = defineStore('pokemon', {
       }))
     },   
     favoritePokemons(state) {
-      return state.favorites?.map(name => ({
+      let outPokemons: string[] = []
+      if (!!this.searchText.length) {
+        outPokemons = state.favorites.filter((p: string) => p.includes(this.searchText))
+        this.searchNotFound = !outPokemons.length
+      } else {
+        outPokemons = state.favorites
+      }
+      this.searchNotFound = false
+
+      return outPokemons?.map(name => ({
         name, 
         favorite: true
       }))

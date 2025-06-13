@@ -12,10 +12,13 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-  <router-link :to="props.path">
+  <router-link
+    :to="props.path"
+    class="flex-1"
+  >
     <Button
       :variant="!props.active ? 'secondary' : undefined"
-      class="w-[275px] flex gap-2 justify-center items-center"
+      class="w-full flex gap-2 justify-center items-center"
      >
       <IconUI :icon="props.icon" class="text-2xl" />
       <slot />

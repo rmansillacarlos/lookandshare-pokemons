@@ -1,6 +1,6 @@
 export interface PokemonItem {
   name: string
-  favorite: string
+  favorite: boolean
 }
 
 export interface PokemonDetail {
