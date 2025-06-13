@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <main class="mt-8 w-96">
+  <main class="mt-8 w-[320px] md:w-[570px]">
     <InputText class="mb-10" placeholder="Search" @input="e => pokemons(e)"/>
     
     <ul class="flex flex-col gap-2">

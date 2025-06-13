@@ -37,15 +37,13 @@
 
 <template>
   <!-- background -->
-  <div class="fixed overflow-auto w-screen h-screen left-0 top-0 z-30 bg-slate-800/50 pointer-events-none" />
+  <div class="fixed inset-0 overflow-auto w-screen h-screen left-0 top-0 z-60 bg-slate-800/50 select-none" />
   <!-- modal -->
-  <div class="fixed z-40 bg-white w-[560px] rounded-md">
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-80 w-[340px] bg-white max-w-[360px] rounded-md md:min-w-[560px]">
     <!-- close button -->
-    <div class="absolute right-0 z-30 p-3">
-      <button class="p-1 bg-white rounded-full cursor-pointer" @click="router.back()">
-        <Icon icon="mdi:close" class="text-xl" />
-      </button>
-    </div>
+    <button class="absolute right-0 m-3 p-1 z-60 bg-white rounded-full cursor-pointer" @click="router.back()">
+      <Icon icon="mdi:close" class="text-xl" />
+    </button>
     <div class="relative">
       <img
         src="@/assets/img/bg-pokemon.png"
