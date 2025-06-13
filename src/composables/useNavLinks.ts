@@ -1,12 +1,12 @@
 export const useNavLinks = () => {
   const navLinks = [
     {
-      path: '/pokemons',
+      path: '/list',
       text: 'All',
       icon: ''
     },
     {
-      path: '/pokemons/favorites',
+      path: '/list/favorites',
       text: 'Favorites',
       icon: ''
     }

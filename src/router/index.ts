@@ -3,6 +3,7 @@ import WelcomeView from '@/views/WelcomeView.vue'
 import ListView from '@/views/ListView.vue'
 import FavoritesView from '@/views/FavoritesView.vue'
 import MainLayout from '@/layout/MainLayout.vue'
+import PokemonModal from '@/components/PokemonModal.vue'
 import { useAppStore } from '@/stores/app'
 
 
@@ -15,14 +16,20 @@ const router = createRouter({
       component: WelcomeView,
     },
     {
-      path: '/pokemons',
-      name: 'pokemons',
+      path: '/list',
+      name: 'list',
       component: MainLayout,
       children: [
         {
           path: '',
-          name: 'list',
-          component: ListView
+          name: 'all',
+          component: ListView,
+          children: [
+            {
+              path: ':name',
+              component: PokemonModal
+            }
+          ]
         },
         {
           path: 'favorites',
@@ -36,7 +43,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const appStore = useAppStore()
-  appStore.setLoading(true)
+  // appStore.setLoading(true)
   next()
 })
 

@@ -1,19 +1,18 @@
 <script setup lang="ts">
   import { RouterLink } from 'vue-router'
   import ListItem from '@/components/ui/ListItem.vue'
-  import type { Pokemon } from '@/types/pokemon'
-  import Icon from './ui/Icon.vue'
+  import Icon from '@/components/ui/Icon.vue'
 
   interface Props {
     name: string
     favorite?: boolean
   }
-
+  
   const props = defineProps<Props>()
 </script>
 
 <template>
-  <RouterLink :to="`pokemon/${props.name}`">
+  <RouterLink :to="`list/${props.name}`">
     <ListItem>
       <div class="w-full flex justify-between items-center capitalize">
         {{ props.name }}
@@ -28,8 +27,3 @@
     </ListItem>
   </RouterLink>
 </template>
-
-
-<style lang="scss" scoped>
-
-</style>

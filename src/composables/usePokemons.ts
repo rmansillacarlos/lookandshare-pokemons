@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/vue-query'
-import { fetchPokemons as fetchPokemonsService } from '@/services/pokemon.services.ts'
+import {
+  fetchPokemons as fetchPokemonsService,
+} from '@/services/pokemon.services.ts'
 
 const usePokemons = () => {
   const fetchPokemons = async () => {
