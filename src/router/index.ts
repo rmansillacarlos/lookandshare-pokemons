@@ -19,26 +19,26 @@ const router = createRouter({
       component: MainLayout,
       children: [
         {
-          path: 'all',
+          path: 'all/:name?',
           name: 'all',
           component: ListView,
-          children: [
-            {
-              path: ':name',
-              component: PokemonModal
-            }
-          ]
+          // children: [
+          //   {
+          //     path: ':name',
+          //     component: PokemonModal
+          //   }
+          // ]
         },
         {
-          path: 'fav',
+          path: 'fav/:name?',
           name: 'favorites',
           component: FavoritesView,
-          children: [
-            {
-              path: ':name',
-              component: PokemonModal
-            }
-          ]
+          // children: [
+          //   {
+          //     path: ':name',
+          //     component: PokemonModal
+          //   }
+          // ]
         }
       ]
     },

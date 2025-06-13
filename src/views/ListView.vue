@@ -1,16 +1,19 @@
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import usePokemons from '@/composables/usePokemons'
   import { usePokemonStore } from '@/stores/pokemon.store'
+  import PokemonModal from '@/components/PokemonModal.vue'
   import PokemonList from '@/components/PokemonList.vue'
   import NotFoundStatus from '@/components/NotFoundStatus.vue'
-  import { useAppStore } from '@/stores/app'
 
-  const appStore = useAppStore()
   const pokemonStore = usePokemonStore()
+
+  const route = useRoute()
+
   const { searchNotFound } = storeToRefs(pokemonStore)
-  const { fetchPokemons } = usePokemons()
+  const { fetchPokemons, closeModal } = usePokemons()
 
   const pokemons = computed(() => (pokemonStore.pokemonsWithFav))
 
@@ -24,6 +27,5 @@
 <template>
   <PokemonList v-if="!searchNotFound" :pokemons="pokemons" />
   <NotFoundStatus v-else />
-  <!-- detail modal -->
-  <router-view :key="$route.fullPath" />
+  <PokemonModal v-if="route.params.name" @close="closeModal" />
 </template>

@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <LoadingView v-if="loading" />
+  <LoadingView :show="loading" />
   <RouterView />
 </template>
 

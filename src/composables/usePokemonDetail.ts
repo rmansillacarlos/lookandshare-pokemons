@@ -1,15 +1,14 @@
 import { useQuery } from '@tanstack/vue-query'
+import { storeToRefs } from 'pinia'
 import {
   getPokemon as getPokemonService
 } from '@/services/pokemon.services.ts'
 import type { PokemonDetail, PokemonDataResponse } from '@/types/pokemon'
 import { usePokemonStore } from '@/stores/pokemon.store'
-import { storeToRefs } from 'pinia'
 
 const usePokemonDetail = (nameParam: string) => {
   const pokemonStore = usePokemonStore()
   const { pokemonDetail } = storeToRefs(pokemonStore)
-
   const getPokemon = async (nameParam: string): Promise<PokemonDetail> => {
     const resp: PokemonDataResponse = await getPokemonService(nameParam)
     const { weight, name, height, types: apiTypes, sprites }: PokemonDataResponse = resp

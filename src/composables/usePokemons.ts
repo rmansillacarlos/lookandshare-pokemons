@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
+import { useRoute, useRouter } from 'vue-router'
 import {
   fetchPokemons as fetchPokemonsService,
 } from '@/services/pokemon.services.ts'
@@ -9,14 +10,17 @@ import { useAppStore } from '@/stores/app'
 const usePokemons = () => {
   const appStore = useAppStore()
   const pokemonStore = usePokemonStore()
+  const router = useRouter()
 
   const fetchPokemons = async () => {
-      const resp: PokemonsResponse = await fetchPokemonsService()
+    appStore.setLoading(true)
+    const resp: PokemonsResponse = await fetchPokemonsService()
 
-      const pokemonsApi = resp.results
-      pokemonStore.setPokemons(pokemonsApi)
-      
-      return pokemonsApi
+    const pokemonsApi = resp.results
+    pokemonStore.setPokemons(pokemonsApi)
+    appStore.setLoading(false)
+    
+    return pokemonsApi
   }
 
   const { isError, refetch, error } = useQuery({
@@ -25,10 +29,15 @@ const usePokemons = () => {
     staleTime: 1000 * 60 * 5,
   })
 
+  const closeModal = () => {
+    router.push('/pokemons/all')
+  }
+
   return {
     fetchPokemons: refetch,
     isError,
-    error
+    error,
+    closeModal
   }
 }
 

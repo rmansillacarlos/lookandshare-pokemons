@@ -1,8 +1,16 @@
 <script setup lang="ts">
+  interface Props {
+    show: boolean
+  }
+
+  const props = defineProps<Props>()
 </script>
 
 <template>
-  <div class="fixed left-0 w-screen h-screen flex justify-center place-items-center z-100">
+  <div
+    class="fixed left-0 w-screen h-screen flex justify-center place-items-center z-100"
+    :class="['transition-opacity', props.show ? 'block opacity-100' : 'hidden opacity-0']"
+  >
     <img
       src="@/assets/img/loader.svg"
       alt="Loading Global Pokemons"
