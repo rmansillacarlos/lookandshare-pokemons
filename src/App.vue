@@ -10,7 +10,7 @@
 
 <template>
   <LoadingView v-if="loading" />
-  <RouterView v-else />
+  <RouterView />
 </template>
 
 <style scoped>

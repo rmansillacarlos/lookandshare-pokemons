@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <main class="h-screen flex flex-col justify-center items-center text-center">
+  <main class="h-screen p-6 flex flex-col justify-center items-center text-center">
     <div class="mx-auto mb-[60px]">
       <img src="@/assets/img/welcome.svg" alt="Global Pokemon Welcome">
     </div>

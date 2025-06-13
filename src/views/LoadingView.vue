@@ -2,13 +2,14 @@
 </script>
 
 <template>
-  <main>
+  <div class="fixed left-0 w-screen h-screen flex justify-center place-items-center z-100">
     <img
       src="@/assets/img/loader.svg"
       alt="Loading Global Pokemons"
-      class="animate-pulse"
+      class="relative z-80 animate-pulse"
     >
-  </main>
+    <div class="absolute inset-0 overflow-auto w-screen h-screen left-0 top-0 z-60 bg-white select-none" />
+  </div>
 </template>
 
 <style scoped>

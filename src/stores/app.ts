@@ -6,6 +6,8 @@ export const useAppStore = defineStore('app', () => {
   const loading: Ref<boolean> = ref(false)
 
   function setLoading(value: boolean): void {
+    console.log('load', value);
+    
     loading.value = value
   }
 
