@@ -17,6 +17,7 @@
         v-for="navItem in navLinks"
         :key="navItem.path"
         :path="navItem.path"
+        :icon="navItem.icon"
         :active="route.path.startsWith(navItem.path)"
       >
         {{ navItem.text }}

@@ -1,14 +1,20 @@
+interface NavLink {
+  path: string
+  text: string
+  icon: string
+}
+
 export const useNavLinks = () => {
-  const navLinks = [
+  const navLinks: NavLink[] = [
     {
       path: '/pokemons/all',
       text: 'All',
-      icon: ''
+      icon: 'mdi:format-list-bulleted'
     },
     {
       path: '/pokemons/fav',
       text: 'Favorites',
-      icon: ''
+      icon: 'mdi:star'
     }
   ]
 
