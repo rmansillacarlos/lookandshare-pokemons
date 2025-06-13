@@ -2,9 +2,10 @@
   import { useRoute } from 'vue-router'
   import InputText from '@/components/ui/InputText.vue'
   import PokemonItem from '@/components/PokemonItem.vue'
+  import type { PokemonItem as PokemonItemType } from '@/types/pokemon'
 
   interface Props {
-    pokemons: any
+    pokemons: PokemonItemType
   }
 
   const route = useRoute()
@@ -22,6 +23,7 @@
     <ul class="flex flex-col gap-2">
       <RouterLink
         v-for="pokemon in props.pokemons"
+        :key="pokemon.name"
         :to="`${route.path}/${pokemon.name}`"
       >
         <PokemonItem

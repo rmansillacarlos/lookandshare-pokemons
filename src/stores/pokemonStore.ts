@@ -12,10 +12,16 @@ export const usePokemonStore = defineStore('pokemon', {
     favorites: []
   }),
   getters: {
-    pokemonsWithFav(state) {
+    pokemonsWithFav(state: State) {
       return state.pokemons.map(p => ({
         ...p,
         favorite: this.favorites.includes(p.name)
+      }))
+    },   
+    favoritePokemons(state) {
+      return state.favorites?.map(name => ({
+        name, 
+        favorite: true
       }))
     }
   },

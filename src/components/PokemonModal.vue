@@ -4,8 +4,8 @@
   import { useScrollLock } from '@/composables/useScrollLock'
   import usePokemonDetail from '@/composables/usePokemonDetail'
   import PokemonStat from '@/components/PokemonProp.vue'
-  import Button from '@/components/ui/Button.vue'
-  import Icon from '@/components/ui/Icon.vue'
+  import Button from '@/components/ui/ButtonUI.vue'
+  import Icon from '@/components/ui/IconUI.vue'
 
   const route = useRoute()
   const router = useRouter()
@@ -18,10 +18,13 @@
   }
 
   const pokemonProps = computed(() => {
+    let pokemonValues
     if (pokemonDetail.value) {
-      const { img, ...propertiesWithoutImg } = pokemonDetail.value
-      return pokemonDetail.value && Object.entries(propertiesWithoutImg)
+      const propertiesWithoutImg = { ...pokemonDetail.value }
+      delete propertiesWithoutImg.img
+      pokemonValues = pokemonDetail.value && Object.entries(propertiesWithoutImg)
     }
+    return pokemonValues
   })
 
   const pokemonImage = computed(() => {
@@ -58,6 +61,7 @@
       <ul>
         <PokemonStat
           v-for="stat in pokemonProps"
+          :key="stat[0]"
           :property="stat[0]"
           :value="stat[1]"
         />

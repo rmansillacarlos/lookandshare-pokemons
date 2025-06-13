@@ -4,12 +4,13 @@ import {
 } from '@/services/pokemon.services.ts'
 import { useLoader } from '@/composables/useLoader'
 import { usePokemonStore } from '@/stores/pokemonStore'
+import type { PokemonsResponse } from '@/types/pokemon'
 
 const usePokemons = () => {
   const pokemonStore = usePokemonStore()
 
   const fetchPokemons = async () => {
-    const resp: any = await fetchPokemonsService()
+    const resp: PokemonsResponse = await fetchPokemonsService()
 
     const pokemonsApi = resp.results
     pokemonStore.setPokemons(pokemonsApi)
@@ -17,7 +18,7 @@ const usePokemons = () => {
     return pokemonsApi
   }
 
-  const { isLoading, isError, data, refetch, error } = useQuery({
+  const { isLoading, isError, refetch, error } = useQuery({
     queryKey: ['pokemons'],
     queryFn: fetchPokemons,
   })

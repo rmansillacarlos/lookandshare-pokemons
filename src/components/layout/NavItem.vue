@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '@/components/ui/Button.vue'
+import Button from '@/components/ui/ButtonUI.vue'
 
 interface Props {
   path: string

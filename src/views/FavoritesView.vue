@@ -1,12 +1,16 @@
 <script setup lang="ts">
   import PokemonList from '@/components/PokemonList.vue'
-  import usePokemons from '@/composables/usePokemons'
+  import { usePokemonStore } from '@/stores/pokemonStore'
+  import { computed } from 'vue'
 
-  const { pokemons } = usePokemons()
+  const pokemonStore = usePokemonStore()
+
+  const favoritePokemons = computed(() => (pokemonStore.favoritePokemons))
+  pokemonStore.loadFromStorage()
 </script>
 
 <template>
-  <PokemonList :pokemons="pokemons" />
+  <PokemonList :pokemons="favoritePokemons" />
   <!-- detail modal -->
   <router-view />
 </template>

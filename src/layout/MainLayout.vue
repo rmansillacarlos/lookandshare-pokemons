@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { RouterView, useRoute } from 'vue-router'
   import { useNavLinks } from '@/composables/useNavLinks.ts'
   import NavItem from '@/components/layout/NavItem.vue'

@@ -1,6 +1,6 @@
 export interface PokemonItem {
   name: string
-  url: string
+  favorite: string
 }
 
 export interface PokemonData {
@@ -8,7 +8,7 @@ export interface PokemonData {
   weight: number
   height: number
   types: string[],
-  img: string
+  img?: string
 }
 
 interface PokemonSpritesResponse {
@@ -17,6 +17,10 @@ interface PokemonSpritesResponse {
       front_default: string
     }
   }
+}
+
+export interface PokemonsResponse {
+  results: PokemonItem[]
 }
 
 export interface PokemonDataResponse {
