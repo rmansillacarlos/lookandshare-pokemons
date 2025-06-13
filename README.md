@@ -1,4 +1,4 @@
-# global-pokemons
+# look&share-pokemons
 
 Este proyecto fue hecho con Vue 3 en su última versión (3.5.13) + Vite + Pinia. Sus rutas son gestionadas con Vue-router. Y sus estilos hechos con TailwindCSS. Contiene test hechos con Vitest.
 

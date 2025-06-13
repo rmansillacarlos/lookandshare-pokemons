@@ -13,7 +13,7 @@
   >
     <img
       src="@/assets/img/loader.svg"
-      alt="Loading Global Pokemons"
+      alt="Loading Pokemons"
       class="relative z-80 animate-pulse"
     >
     <div class="absolute inset-0 overflow-auto w-screen h-screen left-0 top-0 z-60 bg-white select-none" />

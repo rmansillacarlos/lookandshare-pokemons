@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, ref, onMounted, onUnmounted } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
   import { useScrollLock } from '@/composables/useScrollLock'
   import usePokemonDetail from '@/modules/pokemons/composables/usePokemonDetail'
@@ -35,6 +35,31 @@
   const isFavorite = computed(() => {
     return pokemonDetail.value.favorite
   })
+
+  const shareBtnText = ref('Share to my friends')
+  const copied = ref(false)
+
+  const sharePokemon = () => {
+    if (!pokemonDetail.value) return
+
+    const propsToShare: any = {...pokemonDetail.value}
+    delete propsToShare.favorite, propsToShare.img
+
+    propsToShare.types = propsToShare.types.join(', ')
+
+    const textToCopy = Object.entries(propsToShare)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(', ')
+
+    try {
+      navigator.clipboard.writeText(textToCopy)
+      shareBtnText.value = 'Copied to clipboard'
+      copied.value = true
+    } catch (error) {
+      shareBtnText.value = 'Error'
+      copied.value = false
+    }
+  }
 
   useScrollLock()
 
@@ -76,7 +101,7 @@
         />
       </ul>
       <div class="mt-6 flex justify-between items-center">
-        <Button>Share to my friends</Button>
+        <Button @click="sharePokemon" :variant="copied ? 'secondary': 'primary'">{{ shareBtnText }}</Button>
         <button
           class="p-1 rounded-full cursor-pointer hover:bg-gray-100"
           @click="pokemonStore.addOrRemoveFavorite(pokemonDetail.name)"
