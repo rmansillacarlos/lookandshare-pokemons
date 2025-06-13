@@ -1,8 +1,12 @@
-<template>
-  <main>
-    <h1>This is an fav page</h1>
-  </main>
-</template>
+<script setup lang="ts">
+  import PokemonList from '@/components/PokemonList.vue'
+  import usePokemons from '@/composables/usePokemons'
 
-<style>
-</style>
+  const { pokemons } = usePokemons()
+</script>
+
+<template>
+  <PokemonList :pokemons="pokemons" />
+  <!-- detail modal -->
+  <router-view />
+</template>

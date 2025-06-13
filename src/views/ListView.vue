@@ -1,25 +1,20 @@
 <script setup lang="ts">
-  import InputText from '@/components/ui/InputText.vue'
-  import PokemonItem from '@/components/PokemonItem.vue'
   import usePokemons from '@/composables/usePokemons'
+  import { usePokemonStore } from '@/stores/pokemonStore'
+  import PokemonList from '@/components/PokemonList.vue'
+import { computed } from 'vue'
 
-  const { pokemons } = usePokemons()
+  const { fetchPokemons } = usePokemons()
+  const pokemonStore = usePokemonStore()
+
+  const pokemons = computed(() => (pokemonStore.pokemonsWithFav))
+
+  fetchPokemons()
+  pokemonStore.loadFromStorage()
 </script>
 
 <template>
-  <main class="mt-8 w-[320px] md:w-[570px]">
-    <InputText class="mb-10" placeholder="Search" @input="e => pokemons(e)"/>
-    
-    <ul class="flex flex-col gap-2">
-      <RouterLink v-for="pokemon in pokemons" :to="`all/${pokemon.name}`">
-        <PokemonItem
-          :name="pokemon.name"
-          :url="pokemon.url"
-        >
-          {{ pokemon.name }}
-        </PokemonItem>
-      </RouterLink>
-      <router-view />
-    </ul>
-  </main>
+  <PokemonList :pokemons="pokemons" />
+  <!-- detail modal -->
+  <router-view />
 </template>

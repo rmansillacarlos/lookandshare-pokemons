@@ -2,21 +2,22 @@ import { useQuery } from '@tanstack/vue-query'
 import {
   fetchPokemons as fetchPokemonsService,
 } from '@/services/pokemon.services.ts'
-import { useAppStore } from '@/stores/app'
 import { useLoader } from '@/composables/useLoader'
+import { usePokemonStore } from '@/stores/pokemonStore'
 
 const usePokemons = () => {
-  const appStore = useAppStore()
+  const pokemonStore = usePokemonStore()
 
   const fetchPokemons = async () => {
-    appStore.setLoading(true)
     const resp: any = await fetchPokemonsService()
-    appStore.setLoading(false)
+
+    const pokemonsApi = resp.results
+    pokemonStore.setPokemons(pokemonsApi)
     
-    return resp.results
+    return pokemonsApi
   }
 
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data, refetch, error } = useQuery({
     queryKey: ['pokemons'],
     queryFn: fetchPokemons,
   })
@@ -24,7 +25,7 @@ const usePokemons = () => {
   useLoader(isLoading)
 
   return {
-    pokemons: data,
+    fetchPokemons: refetch,
     isError,
     error
   }
