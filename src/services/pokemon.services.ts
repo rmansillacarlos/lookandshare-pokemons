@@ -7,7 +7,7 @@ export const fetchPokemons = async (): Promise<PokemonsResponse> => {
   return response.data
 }
 
-export const getPokemon = async (name: any): Promise<PokemonDataResponse> => {
+export const getPokemon = async (name: string): Promise<PokemonDataResponse> => {
   const response = await api.get(`pokemon/${name}`)
 
   return response.data

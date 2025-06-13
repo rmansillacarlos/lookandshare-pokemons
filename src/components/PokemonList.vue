@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRouter } from 'vue-router'
   import type { PokemonItem as PokemonItemType } from '@/types/pokemon'
   import PokemonItem from '@/components/PokemonItem.vue'
 
@@ -16,6 +16,7 @@
   <ul class="flex flex-col gap-2">
     <a
       v-for="pokemon in props.pokemons"
+      :key="pokemon.name"
       class="cursor-pointer"
       @click="router.push({ path: `/pokemons/all/${pokemon.name}` })"
     >

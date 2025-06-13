@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import {
   fetchPokemons as fetchPokemonsService,
 } from '@/services/pokemon.services.ts'

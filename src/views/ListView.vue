@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRoute } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import usePokemons from '@/composables/usePokemons'
   import { usePokemonStore } from '@/stores/pokemon.store'
