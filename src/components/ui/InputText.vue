@@ -10,6 +10,11 @@
   }>()
 
   const props = defineProps<Props>()
+
+  const updateModelValue = (e: Event) => {
+    const target = e.target as HTMLInputElement
+    emit('update:modelValue', target.value)
+  } 
 </script>
 
 <template>
@@ -22,7 +27,7 @@
       class="w-full focus:outline-0" 
       type="text" 
       :placeholder="props.placeholder" 
-      @input="(e: Event) => emit('update:modelValue', e.target.value)"
+      @input="updateModelValue"
     >
   </div>
 </template>

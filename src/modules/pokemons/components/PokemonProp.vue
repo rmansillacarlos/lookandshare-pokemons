@@ -1,7 +1,7 @@
 <script setup lang="ts">
   interface Props {
     property: string
-    value: string | number | string[]
+    value: string | number | string[] | boolean
   }
 
   const props = defineProps<Props>()

@@ -9,6 +9,14 @@
   import Icon from '@/components/ui/IconUI.vue'
   import { storeToRefs } from 'pinia'
 
+  interface PropsToShare {
+    name: string
+    weight: number
+    height: number
+    img: string | undefined
+    types: string
+  }
+
   const route = useRoute()
   const router = useRouter()
   const selectedPokemonName = Array.isArray(route.params.name) ? route.params.name[0] : route.params.name
@@ -42,10 +50,15 @@
   const sharePokemon = () => {
     if (!pokemonDetail.value) return
 
-    const propsToShare: any = {...pokemonDetail.value}
-    delete propsToShare.favorite, propsToShare.img
-
-    propsToShare.types = propsToShare.types.join(', ')
+    const { name, weight, height, img, types: typesArr } = pokemonDetail.value
+    
+    const propsToShare: PropsToShare = { 
+      name, 
+      weight, 
+      height, 
+      img: img || undefined, 
+      types: typesArr.join(', ')
+    }
 
     const textToCopy = Object.entries(propsToShare)
       .map(([key, value]) => `${key}: ${value}`)
@@ -55,7 +68,7 @@
       navigator.clipboard.writeText(textToCopy)
       shareBtnText.value = 'Copied to clipboard'
       copied.value = true
-    } catch (error) {
+    } catch {
       shareBtnText.value = 'Error'
       copied.value = false
     }

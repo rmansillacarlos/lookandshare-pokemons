@@ -32,7 +32,7 @@ vi.mock('@/modules/pokemons/composables/usePokemons', () => ({
   })
 }))
 
-const mockGetPokemonDetail = vi.fn().mockResolvedValue()
+const mockGetPokemonDetail = vi.fn().mockResolvedValue(1)
 
 vi.mock('@/modules/pokemons/composables/usePokemonDetail', () => ({
   default: (name: string) => ({
